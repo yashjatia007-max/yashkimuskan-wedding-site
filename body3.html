@@ -1,0 +1,206 @@
+<div id="sky" aria-hidden="true"></div>
+<div id="stars" aria-hidden="true"><div class="sl s1"></div><div class="sl s2"></div><div class="sl s3"></div></div>
+<div id="grain" aria-hidden="true"></div>
+<div id="bar" aria-hidden="true"><i></i></div>
+<div id="chap" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-label="Jump to a different act"><b id="chNum">01</b><span id="chName"></span><i class="chch" aria-hidden="true"></i></div>
+<ul id="chapMenu" class="chapmenu" role="menu" aria-hidden="true"></ul>
+<button id="mbtn" aria-label="Play background music" aria-pressed="false">&#9834;</button>
+<audio id="bgm" loop preload="none"></audio>
+
+<!-- ============ HERO : the curtains part ============ -->
+<header id="hero" data-sky="#0A0308,#2B0716">
+  <div class="hl rays" data-speed="0.28"></div>
+  <div class="hl spot sp1"></div><div class="hl spot sp2"></div>
+  <canvas id="pc" class="hl" aria-hidden="true"></canvas>
+  <div class="cur cl"></div><div class="cur cr"></div>
+  <div class="valance"></div>
+  <div class="hop" id="hop" role="button" tabindex="0" aria-label="Tap the clapperboard, or flick its arm down, to open the curtains">
+    <div class="hopx" id="hopx">
+      <div class="hoarm" id="hoarm"></div>
+      <div class="hostick"></div>
+      <div class="hocbd"><i>OPENING TITLES &middot; TAKE 1</i><b>YASH weds MUSKAN</b><i>DIR. THE FAMILIES</i></div>
+    </div>
+    <p class="hohint" id="hohint">TAP OR FLICK THE CLAPPER DOWN</p>
+  </div>
+  <div class="hflash" id="hflash" aria-hidden="true"></div>
+  <div class="haction" id="haction" aria-hidden="true">Action!</div>
+  <div class="hcontent" id="hcontent">
+    <p class="presents hi" style="--d:1.3s">JATIA &amp; CHOUDHARI FAMILIES PRESENT</p>
+    <div class="art hi pop" data-depth="10" style="--d:1.5s">
+      <i class="ring"></i><i class="halo"></i>
+      <img alt="Illustration of Yash and Muskan holding hands, framed by white roses and jasmine" src="{{COUPLE}}">
+      {{STICKER}}
+    </div>
+    <h1 class="title" aria-label="Yash weds Muskan">
+      <span class="t t1" style="--d:1.95s">Yash</span>
+      <span class="weds" style="--d:2.3s">weds</span>
+      <span class="t t2" style="--d:2.45s">Muskan</span>
+    </h1>
+    <p class="tagline hi" style="--d:2.9s">Do din. Ek shaadi. Poori masti.</p>
+    <p class="release hi" style="--d:3.1s"><b>RELEASING 20 &middot; 21 NOVEMBER 2026</b><span>EXPRESS INN, NASHIK</span></p>
+  </div>
+  <a class="cue" id="cue" href="#invite" aria-label="Scroll down to begin"><span>SCROLL</span><i></i></a>
+</header>
+
+<!-- ============ 01 PRESENTING : film leader then the invitation ============ -->
+<section id="invite" class="pin" data-chapter="Presenting" data-sky="#050203,#1C0710" style="--h:290vh">
+  <div class="stick">
+    <div class="inv">
+      <div class="inv-t"><p class="eyebrow chn">ACT 01</p><h2 class="scr big">Presenting a love story</h2></div>
+      <div class="screen marq">
+        <div class="scr-in"><img alt="Illustration of Yash and Muskan dancing" src="{{DANCE}}"></div>
+      </div>
+      <div class="inv-x">
+        <p class="rv0 ln1" style="--a:.5"><span class="fam">Yogesh Jatia &amp; Ambica Jatia</span><span class="tw">WITH</span><span class="fam">Umesh Choudhari &amp; Neha Choudhari</span></p>
+        <p class="rv0 ln2" style="--a:.6">joyfully invite you to bless the wedding of their children</p>
+        <p class="rv0 ln3 scr" style="--a:.7">Yash &amp; Muskan</p>
+        <p class="rv0 ln4" style="--a:.8">20 &amp; 21 NOVEMBER 2026 &nbsp;&middot;&nbsp; NASHIK</p>
+        <p class="rv0 invhint" style="--a:.5" aria-hidden="true">SCROLL TO ROLL THE FILM</p>
+      </div>
+    </div>
+    <div class="leader" aria-hidden="true">
+      <div class="ldc"><i class="sweep"></i><i class="xh"></i><i class="xv"></i><b id="ldNum">3</b></div>
+      <p class="ldl">REEL 01 &nbsp;&middot;&nbsp; YASH WEDS MUSKAN</p>
+      <p class="ldk">SCROLL TO ROLL THE FILM</p>
+    </div>
+    <div class="flash" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ============ 02 RELEASE DATE ============ -->
+<section id="now" class="chapter" data-chapter="Release Date" data-sky="#2A0620,#6B0F3F">
+  <div class="rays big" data-par="-0.2" data-rot="0.05" aria-hidden="true"></div>
+  <div class="wrap center">
+    <p class="eyebrow chn rv">ACT 02</p>
+    <div class="cdbox marq rv">
+      <p class="cdtop" id="cdLabel">COMING SOON &nbsp;&middot;&nbsp; THE PREMIERE BEGINS IN</p>
+      <div id="cdGrid" class="cdg">
+        <div class="cdb"><b id="c-d">--</b><span>DAYS</span></div>
+        <div class="cdb"><b id="c-h">--</b><span>HOURS</span></div>
+        <div class="cdb"><b id="c-m">--</b><span>MINUTES</span></div>
+        <div class="cdb"><b id="c-s">--</b><span>SECONDS</span></div>
+      </div>
+      <div id="cdGrid2" style="display:none">
+        <p id="cdBig" class="cdbig"></p>
+        <p id="cdSub" class="cdsub"></p>
+      </div>
+    </div>
+    <p class="rv cdnote" id="cdNote">Premiere: Friday 20 November, from 12 noon &middot; Express Inn, Nashik</p>
+  </div>
+</section>
+
+<!-- ============ 03 THE SCREENPLAY ============ -->
+<section id="days" class="chapter" data-chapter="The Screenplay" data-sky="#2E0A36,#9B1B4A">
+  <i class="reel" aria-hidden="true"></i>
+  <div class="wrap">
+    <div class="sechead center">
+      <p class="eyebrow chn rv">ACT 03</p>
+      <h2 class="h2 rv">Two days. <em>One</em> wedding.</h2>
+    </div>
+    {{DAYS}}
+  </div>
+</section>
+
+<!-- ============ 04 SAAT VACHAN ============ -->
+<section id="vows" class="pin" data-chapter="The Vows" data-sky="#07040E,#1A0A2A" style="--h:300vh">
+  <div class="stick">
+    <div class="vglow"></div>
+    <div class="rays v" aria-hidden="true"></div>
+    <div class="vwrap">
+      <div class="vhead">{{CLAP}}<p class="eyebrow chn">ACT 04</p><p class="vdev">वचन</p><p class="vhint">SCROLL FOR THE VOWS</p></div>
+      <div class="vstage">{{VTEXT}}</div>
+      <div class="frames">{{FRAMES}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 THE LOCATION ============ -->
+<section id="venue" class="chapter" data-chapter="The Location" data-sky="#062A31,#0D4A55">
+  <div class="wrap">
+    <div class="sechead center">
+      <p class="eyebrow chn rv">ACT 05</p>
+      <h2 class="h2 rv">Shot on <em>location</em> in Nashik</h2>
+    </div>
+    <div class="route rv" id="route">
+      <svg viewBox="0 0 360 248" aria-hidden="true">
+        <defs><filter id="gl"><feGaussianBlur stdDeviation="3"/></filter></defs>
+        <path id="rtBg" d="M34 186C58 64 122 208 150 128S170 74 180 58" fill="none" stroke="#FFE29A" stroke-opacity=".3" stroke-width="2" stroke-dasharray="10 8"/>
+        <path id="rtBg2" d="M326 186C304 96 254 178 224 122S192 74 180 58" fill="none" stroke="#FFE29A" stroke-opacity=".3" stroke-width="2" stroke-dasharray="10 8"/>
+        <path id="rtFg" d="M34 186C58 64 122 208 150 128S170 74 180 58" fill="none" stroke="#FFA51F" stroke-width="3" stroke-linecap="round"/>
+        <path id="rtFg2" d="M326 186C304 96 254 178 224 122S192 74 180 58" fill="none" stroke="#FFA51F" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="34" cy="186" r="6" fill="#062A31" stroke="#FFE29A" stroke-width="2"/>
+        <circle cx="326" cy="186" r="6" fill="#062A31" stroke="#FFE29A" stroke-width="2"/>
+        <path d="M180 40l8 16h-16z" fill="#F0357D"/><circle cx="180" cy="58" r="7" fill="#FFE29A" stroke="#F0357D" stroke-width="3"/>
+        <circle id="rtGlow" r="11" fill="#FFA51F" filter="url(#gl)" opacity=".85" style="opacity:0"/><circle id="rtDot" r="5.5" fill="#FFF3DB" style="opacity:0"/>
+        <circle id="rtGlow2" r="11" fill="#FFA51F" filter="url(#gl)" opacity=".85" style="opacity:0"/><circle id="rtDot2" r="5.5" fill="#FFF3DB" style="opacity:0"/>
+        <text x="34" y="212" text-anchor="middle" class="rl">MUMBAI</text>
+        <text x="326" y="212" text-anchor="middle" class="rl">AKOLA</text>
+        <text x="180" y="22" text-anchor="middle" class="rl">NASHIK</text>
+        <text x="34" y="236" text-anchor="middle" class="rk">160 km</text>
+        <text x="326" y="236" text-anchor="middle" class="rk">430 km</text>
+      </svg>
+    </div>
+    <div class="slate rv">
+      <div class="sl-bar"><i></i><i></i></div>
+      <div class="sl-grid">
+        <div class="sl-c w"><span>LOCATION</span><b>Express Inn</b><em>Pathardi Phata, Mumbai Agra Road, Ambad<br>Nashik 422010, Maharashtra</em></div>
+        <div class="sl-c"><span>PRODUCTION</span><b>Yash weds Muskan</b></div>
+        <div class="sl-c"><span>SHOOT DATES</span><b>20 &amp; 21 Nov 2026</b></div>
+      </div>
+    </div>
+    <div class="btns rv">
+      <a class="btn gold" id="bDir" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Express+Inn+Pathardi+Phata+Ambad+Nashik">Get directions</a>
+      <a class="btn" id="bCal" target="_blank" rel="noopener" href="#">Add to calendar</a>
+    </div>
+    <p class="eyebrow center gt rv">GETTING THERE</p>
+    <div class="tiles">
+      <div class="tile rv" style="--i:0"><b>By road</b><span>Via Samruddhi Mahamarg from Mumbai and Akola.</span></div>
+      <div class="tile rv" style="--i:1"><b>By cab</b><span>Uber Intercity from Mumbai. Uber runs within Nashik.</span></div>
+      <div class="tile rv" style="--i:0"><b>By air</b><span>Nashik airport, 23 km. Mumbai, 160 km.</span></div>
+      <div class="tile rv" style="--i:1"><b>By rail</b><span>Nashik Road station, 11 km.</span></div>
+      <div class="tile wide rv"><b>Stay</b><span>Check-in from 12:00 pm on 20 November. Every function is on the property.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 BEHIND THE SCENES ============ -->
+<section id="memories" class="chapter" data-chapter="Behind the Scenes" data-sky="#2B0A2E,#5A1250">
+  <i class="reel" aria-hidden="true"></i>
+  <div class="wrap center">
+    <p class="eyebrow chn rv">ACT 06</p>
+    <h2 class="h2 rv" id="memHead">Behind the <em>scenes</em></h2>
+    <div id="memVideo" style="display:none;margin-top:22px"></div>
+    <div id="memGrid" class="mgrid"></div>
+    <p id="memEmpty" class="mempty rv">Photographs and film from the wedding<br>will appear here shortly.</p>
+    <div id="memLinks" style="margin-top:14px"></div>
+    <div id="upBox" class="upbox rv" style="display:none">
+      <p class="eyebrow" style="margin-bottom:8px">YOUR PHOTOGRAPHS</p>
+      <p id="upNote" class="upnote">If you took pictures, we would love to have them.</p>
+      <input class="fld" id="upWho" type="text" placeholder="Your name" autocomplete="name">
+      <input id="upFiles" type="file" accept="image/*" multiple style="display:none">
+      <button class="btn gold full" id="upPick" type="button">CHOOSE PHOTOS</button>
+      <p id="upStatus" class="upstat" style="display:none"></p>
+      <div id="upBar" class="upbar" style="display:none"><div id="upFill"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 END CREDITS ============ -->
+<section id="finale" class="chapter" data-chapter="End Credits" data-sky="#3A0716,#0C0205">
+  <i class="reel" aria-hidden="true"></i>
+  <canvas id="pc2" aria-hidden="true"></canvas>
+  <div class="wrap center">
+    <p class="eyebrow chn rv">ACT 07</p>
+    <div class="sign marq rv"><p class="s1">SEE YOU AT THE</p><p class="s2">PREMIERE</p></div>
+    <p class="scr padharo rv">Padharo sa</p>
+    <p class="finsub rv">Your blessings will make the picture complete.</p>
+    <div class="credits">{{CREDITS}}</div>
+    <div class="contacts">
+      <a class="contact rv" href="tel:+919324837375" style="--i:0"><span>Groom's side</span><b>Yogesh<br>Jatia</b><em>+91&nbsp;93248&nbsp;37375</em></a>
+      <a class="contact rv" href="tel:+917020139769" style="--i:1"><span>Bride's side</span><b>Umesh<br>Choudhari</b><em>+91&nbsp;70201&nbsp;39769</em></a>
+    </div>
+    <p class="foot rv">With love, from the Jatia &amp; Choudhari families</p>
+  </div>
+</section>
+
+<div id="lightbox" style="display:none" role="dialog" aria-label="Photograph"><img id="lbImg" alt=""></div>
