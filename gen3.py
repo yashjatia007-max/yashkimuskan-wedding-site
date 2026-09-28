@@ -56,7 +56,7 @@ DAYS=[
  dict(id='d1',num='20',dow='Friday',sub='The build-up',mood='night',ev=[
   ('2026-11-20T13:00:00+05:30','1:00 PM','Lunch','Grandeur Hall'),
   ('2026-11-20T15:00:00+05:30','3:00 PM','Mayara','Groom side &middot; Express Royal'),
-  ('2026-11-20T15:00:00+05:30','3:00 PM','Mayara','Bride side &middot; Grandeur Hall'),
+  ('2026-11-20T14:00:00+05:30','2:00 PM','Mayara','Bride side &middot; Grandeur Hall'),
   ('2026-11-20T18:00:00+05:30','6:00 PM','Tilak','Lawn'),
   ('2026-11-20T19:00:00+05:30','7:00 PM','Ring ceremony &amp; Sangeet','Lawn'),
   ('2026-11-20T23:00:00+05:30','11:00 PM','After party','Express Royal')]),
