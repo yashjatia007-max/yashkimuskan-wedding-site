@@ -30,7 +30,7 @@ function vis(el){return !!el&&el.offsetHeight>0;}
 function applyPhase(){
   var ph=phase(); if(ph===lastPhase) return; lastPhase=ph;
   root.setAttribute('data-phase',ph);
-  var grid=$('cdGrid'),grid2=$('cdGrid2'),label=$('cdLabel'),note=$('cdNote'),mem=$('memories'),now=$('now');
+  var grid=$('cdGrid'),grid2=$('cdGrid2'),label=$('cdLabel'),note=$('cdNote'),mem=$('memories'),now=$('now'),days=$('days');
   if(ph==='before'){
     grid.style.display='grid';grid2.style.display='none';label.innerHTML='COMING SOON &nbsp;&middot;&nbsp; THE PREMIERE BEGINS IN';
   }else{
@@ -38,7 +38,14 @@ function applyPhase(){
     if(ph==='during'){label.textContent='NOW SHOWING';}
     else{label.textContent='MARRIED SINCE';}
     renderMemories(ph);
-    if(ph==='after'&&mem&&now&&now.parentNode) now.parentNode.insertBefore(mem,now.nextSibling);
+    // During the wedding: surface the day-by-day schedule (with its live "NEXT UP" event)
+    // and the photo uploader right after the countdown, instead of leaving them further
+    // down the page behind the invitation/vows/location chapters.
+    if(ph==='during'&&mem&&days&&days.parentNode) days.parentNode.insertBefore(mem,days.nextSibling);
+    // After the wedding: the invitation-style "Presenting" chapter is hidden (see the
+    // html[data-phase="after"] CSS rule), so put the photo uploader first, right after
+    // the hero - that's the one thing guests still need to do once the day is over.
+    if(ph==='after'&&mem&&hero&&hero.parentNode) hero.parentNode.insertBefore(mem,hero.nextSibling);
   }
   renumber(); measure(); frame(); revealNow();
 }
