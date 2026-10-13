@@ -302,6 +302,7 @@ h1,h2,p{margin:0}
 .sign p{font-family:'Bebas Neue',sans-serif;letter-spacing:.3em;color:var(--gold2);line-height:1}
 .sign .s1{font-size:clamp(16px,4.6vw,22px);margin-bottom:6px}
 .sign .s2{font-family:'Rozha One',serif;font-size:clamp(40px,12vw,76px);letter-spacing:.06em;background:linear-gradient(180deg,#FFF6CE,#FFD25E 50%,#F09A1E);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 0 #7a3a00);padding-left:.06em}
+.thanks{margin-top:18px;font-family:'Bebas Neue',sans-serif;letter-spacing:.22em;font-size:clamp(13px,3.4vw,16px);color:var(--muted)}
 .padharo{font-size:clamp(56px,16vw,110px);line-height:1.1;margin-top:20px;color:var(--rani);text-shadow:0 0 30px rgba(240,53,125,.6),0 4px 0 #7d0b3a}
 .finsub{margin-top:6px;font-size:clamp(16px,4.4vw,20px);color:var(--muted);text-wrap:balance;max-width:24em;margin-left:auto;margin-right:auto}
 .credits{margin:clamp(34px,6vh,60px) auto 0;max-width:640px;display:flex;flex-direction:column;gap:clamp(20px,3.4vh,30px)}
@@ -317,7 +318,7 @@ h1,h2,p{margin:0}
 
 /* ---------- phase switches ---------- */
 html[data-phase="before"] #memories{display:none}
-html[data-phase="after"] #days,html[data-phase="after"] #vows,html[data-phase="after"] #venue{display:none}
+html[data-phase="after"] #days,html[data-phase="after"] #vows,html[data-phase="after"] #venue,html[data-phase="after"] #invite{display:none}
 @media (min-width:760px){.mgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.mgrid img{height:220px}}
 @media (min-width:1000px){
  .h2{font-size:clamp(44px,4.4vw,72px)}
@@ -561,6 +562,7 @@ html[data-phase="after"] #days,html[data-phase="after"] #vows,html[data-phase="a
   <div class="wrap center">
     <p class="eyebrow chn rv">ACT 07</p>
     <div class="sign marq rv"><p class="s1">SEE YOU AT THE</p><p class="s2">PREMIERE</p></div>
+    <p class="thanks rv">THANK YOU FOR BEING PART OF OUR STORY</p>
     <p class="scr padharo rv">Padharo sa</p>
     <p class="finsub rv">Your blessings will make the picture complete.</p>
     <div class="credits"><div class="crd rv" style="--i:0"><span>STARRING</span><b>Yash Jatia &nbsp;&amp;&nbsp; Muskan Choudhari</b></div><div class="crd rv" style="--i:1"><span>BLESSED BY</span><b>Sushilkumar Jatia &amp; Late Gayatridevi Jatia<br>Late Sureshkumar Choudhari &amp; Meera Choudhari</b></div><div class="crd rv" style="--i:0"><span>PRESENTED BY</span><b>Yogesh Jatia &amp; Ambica Jatia<br>Umesh Choudhari &amp; Neha Choudhari</b></div><div class="crd rv" style="--i:1"><span>LOCATION</span><b>Express Inn, Nashik</b></div><div class="crd rv" style="--i:0"><span>MUSIC</span><b>Dhol, DJ and a very loud baraat</b></div><div class="crd rv" style="--i:1"><span>CHOREOGRAPHY</span><b>Everyone, ready or not</b></div><div class="crd rv" style="--i:0"><span>SPECIAL APPEARANCE</span><b>You</b></div></div>
@@ -607,7 +609,7 @@ function vis(el){return !!el&&el.offsetHeight>0;}
 function applyPhase(){
   var ph=phase(); if(ph===lastPhase) return; lastPhase=ph;
   root.setAttribute('data-phase',ph);
-  var grid=$('cdGrid'),grid2=$('cdGrid2'),label=$('cdLabel'),note=$('cdNote'),mem=$('memories'),now=$('now');
+  var grid=$('cdGrid'),grid2=$('cdGrid2'),label=$('cdLabel'),note=$('cdNote'),mem=$('memories'),now=$('now'),days=$('days');
   if(ph==='before'){
     grid.style.display='grid';grid2.style.display='none';label.innerHTML='COMING SOON &nbsp;&middot;&nbsp; THE PREMIERE BEGINS IN';
   }else{
@@ -615,7 +617,14 @@ function applyPhase(){
     if(ph==='during'){label.textContent='NOW SHOWING';}
     else{label.textContent='MARRIED SINCE';}
     renderMemories(ph);
-    if(ph==='after'&&mem&&now&&now.parentNode) now.parentNode.insertBefore(mem,now.nextSibling);
+    // During the wedding: surface the day-by-day schedule (with its live "NEXT UP" event)
+    // and the photo uploader right after the countdown, instead of leaving them further
+    // down the page behind the invitation/vows/location chapters.
+    if(ph==='during'&&mem&&days&&days.parentNode) days.parentNode.insertBefore(mem,days.nextSibling);
+    // After the wedding: the invitation-style "Presenting" chapter is hidden (see the
+    // html[data-phase="after"] CSS rule), so put the photo uploader first, right after
+    // the hero - that's the one thing guests still need to do once the day is over.
+    if(ph==='after'&&mem&&hero&&hero.parentNode) hero.parentNode.insertBefore(mem,hero.nextSibling);
   }
   renumber(); measure(); frame(); revealNow();
 }
