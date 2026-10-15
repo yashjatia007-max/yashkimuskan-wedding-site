@@ -62,7 +62,8 @@ DAYS=[
   ('2026-11-20T23:00:00+05:30','11:00 PM','After party','Express Royal')]),
  dict(id='d2',num='21',dow='Saturday',sub='The main event',mood='day',ev=[
   ('2026-11-21T08:00:00+05:30','8:00 AM','Groom haldi','Grandeur Hall'),
-  ('2026-11-21T10:00:00+05:30','10:00 AM','Carnival','Express Royal'),
+  ('2026-11-21T10:00:00+05:30','10:00 AM','Carnival','Lawn'),
+  ('2026-11-21T12:30:00+05:30','12:30 PM','Lunch','Express Royal'),
   ('2026-11-21T15:00:00+05:30','3:00 PM','Baraat','Main Lobby'),
   ('2026-11-21T17:00:00+05:30','5:00 PM','Varmala','Lawn'),
   ('2026-11-21T18:00:00+05:30','6:00 PM','Phera','Lawn'),
