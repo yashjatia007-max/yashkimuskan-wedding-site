@@ -27,8 +27,8 @@ head = '''<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Yash &amp; Muskan · 20–21 November 2026</title>
-<meta name="description" content="Yash weds Muskan. 20 and 21 November 2026, Express Inn, Nashik.">
+<title>Yash &amp; Dr. Muskan · 20–21 November 2026</title>
+<meta name="description" content="Yash weds Dr. Muskan. 20 and 21 November 2026, Express Inn, Nashik.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0A0308">
 <script>document.documentElement.className='js';</script>

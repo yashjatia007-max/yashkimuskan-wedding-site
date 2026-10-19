@@ -81,7 +81,7 @@ def days_html():
 <ol class="tl"><i class="tlfill"></i>{''.join(evs)}</ol></div>''')
     return '\n'.join(out)
 
-CREDITS=[('STARRING','Yash Jatia &nbsp;&amp;&nbsp; Muskan Choudhari'),
+CREDITS=[('STARRING','Yash Jatia &nbsp;&amp;&nbsp; Dr. Muskan Choudhari'),
 ('BLESSED BY','Sushilkumar Jatia &amp; Late Gayatridevi Jatia<br>Late Sureshkumar Choudhari &amp; Meera Choudhari'),
 ('PRESENTED BY','Yogesh Jatia &amp; Ambica Jatia<br>Umesh Choudhari &amp; Neha Choudhari'),
 ('LOCATION','Express Inn, Nashik'),

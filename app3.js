@@ -187,13 +187,13 @@ function renderMemories(ph){
 // ======================= CALENDAR / DIRECTIONS =======================
 (function(){
   var loc='Express Inn, Pathardi Phata, Mumbai Agra Road, Ambad, Nashik 422010';
-  var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent("Yash & Muskan's wedding")+'&dates=20261120T073000Z/20261121T173000Z&location='+encodeURIComponent(loc)+'&details='+encodeURIComponent('Two days of celebration, 20 & 21 November 2026. Contacts: Yogesh Jatia +91 93248 37375, Umesh Choudhari +91 70201 39769.');
+  var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent("Yash & Dr. Muskan's wedding")+'&dates=20261120T073000Z/20261121T173000Z&location='+encodeURIComponent(loc)+'&details='+encodeURIComponent('Two days of celebration, 20 & 21 November 2026. Contacts: Yogesh Jatia +91 93248 37375, Umesh Choudhari +91 70201 39769.');
   var c=$('bCal');if(c)c.href=g;
   var i=$('bIcs');
   if(i)i.addEventListener('click',function(e){
     e.preventDefault();
     var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Yash and Muskan//Wedding//EN'];
-    [['20261120T073000Z','20261120T183000Z',"Yash & Muskan: Day 1 (Mayara, Sangeet)"],['20261121T023000Z','20261121T173000Z',"Yash & Muskan: Wedding day (Haldi to Reception)"]].forEach(function(v,k){
+    [['20261120T073000Z','20261120T183000Z',"Yash & Dr. Muskan: Day 1 (Mayara, Sangeet)"],['20261121T023000Z','20261121T173000Z',"Yash & Dr. Muskan: Wedding day (Haldi to Reception)"]].forEach(function(v,k){
       L.push('BEGIN:VEVENT','UID:ym-wedding-'+k+'@yashkimuskan.com','DTSTAMP:20260920T000000Z','DTSTART:'+v[0],'DTEND:'+v[1],'SUMMARY:'+v[2].replace(/,/g,'\\,'),'LOCATION:'+loc.replace(/,/g,'\\,'),'END:VEVENT');});
     L.push('END:VCALENDAR');
     var blob=new Blob([L.join('\r\n')],{type:'text/calendar'}),a=D.createElement('a');
