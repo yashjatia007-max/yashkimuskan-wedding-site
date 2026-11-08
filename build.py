@@ -29,7 +29,8 @@ head = '''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Yash &amp; Dr. Muskan · 20–21 November 2026</title>
 <meta name="description" content="Yash weds Dr. Muskan. 20 and 21 November 2026, Express Inn, Nashik.">
-<meta name="robots" content="noindex">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="theme-color" content="#0A0308">
 <script>document.documentElement.className='js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +56,7 @@ with open(os.path.join(out_dir, 'v2', 'index.html'), 'w') as f:
     f.write(head)
 
 # root/canonical variant: same content, minus the noindex meta tag
-root_html = head.replace('<meta name="robots" content="noindex">\n', '')
+root_html = head  # 8 Nov 2026: root is noindex too (user wants the site out of Google); identical to v2
 with open(os.path.join(out_dir, 'index.html'), 'w') as f:
     f.write(root_html)
 
