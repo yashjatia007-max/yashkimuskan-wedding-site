@@ -16,7 +16,7 @@ var T_AFTER=new Date('2026-11-22T06:00:00+05:30').getTime();
 var T_UPLOAD_CLOSE=new Date('2026-11-30T23:59:00+05:30').getTime();
 var RSVP_ENDPOINT='https://script.google.com/macros/s/AKfycbyv0goxTGlCWfX36fzbVXiQ3OJa9IYulBMFdro_dhNbn2l87YY2HD1rsZBgyiWWyyGo/exec'; // photo uploader endpoint (unchanged)
 var MEMORIES={playlistId:'',albumUrl:'',photos:[],uploads:true};
-var MUSIC_SRC='';
+var MUSIC_SRC=(location.protocol==='file:')?'':'/music.mp3'; // "Tu Meri Muskaan" (original, ElevenLabs Music) — off in local file:// previews
 
 var hero=$('hero'), skyEl=$('sky'), barFill=$('bar').firstElementChild, chap=$('chap'), chNum=$('chNum'), chName=$('chName');
 var evEls=$$('.ev[data-t]').map(function(e){return {el:e,t:new Date(e.getAttribute('data-t')).getTime(),name:e.querySelector('.en').textContent,place:e.querySelector('.ep').textContent};});
@@ -203,13 +203,36 @@ function renderMemories(ph){
 })();
 
 // ======================= MUSIC =======================
+// Autoplays on the guest's first tap/click/key (the clapperboard tap counts) — browsers block sound before any gesture.
+// Muting is remembered per device (localStorage ym_music=off). Pauses while the tab is hidden.
 (function(){
-  var b=$('mbtn'),a=$('bgm');if(!MUSIC_SRC)return;
-  a.src=MUSIC_SRC;a.volume=.45;b.classList.add('on');
-  b.addEventListener('click',function(){
-    if(a.paused){a.play().then(function(){b.setAttribute('aria-pressed','true');b.style.background='#E2B857';b.style.color='#241040';}).catch(function(){});}
-    else{a.pause();b.setAttribute('aria-pressed','false');b.style.background='';b.style.color='';}
-  });
+  var b=$('mbtn'),a=$('bgm'),tip=$('mtip');if(!MUSIC_SRC||!b||!a)return;
+  var VOL=.42,muted=false,started=false,fadeT=null,wasPlaying=false;
+  try{muted=localStorage.getItem('ym_music')==='off';}catch(e){}
+  a.src=MUSIC_SRC;a.loop=true;a.volume=0;b.classList.add('on');
+  window.addEventListener('load',function(){try{a.preload='auto';a.load();}catch(e){}});
+  function ui(){var p=!a.paused;b.classList.toggle('playing',p);b.setAttribute('aria-pressed',p?'true':'false');
+    b.setAttribute('aria-label',p?'Mute background music':'Play background music');if(tip&&p)tip.classList.remove('on');}
+  function fade(to,ms,done){clearInterval(fadeT);var from=a.volume,t0=Date.now();
+    fadeT=setInterval(function(){var k=Math.min(1,(Date.now()-t0)/ms);a.volume=Math.max(0,Math.min(1,from+(to-from)*k));if(k>=1){clearInterval(fadeT);done&&done();}},40);}
+  var EV=['pointerdown','touchend','keydown','click'],listening=true,trying=false;
+  function unlisten(){if(!listening)return;listening=false;EV.forEach(function(t){D.removeEventListener(t,first,true);});}
+  function play(delay){var p;trying=true;try{p=a.play();}catch(e){trying=false;return;}
+    if(p&&p.then){p.then(function(){trying=false;started=true;unlisten();ui();setTimeout(function(){fade(VOL,2200);},delay||0);}).catch(function(){trying=false;ui();});}
+    else{trying=false;started=true;unlisten();ui();fade(VOL,2200);}}
+  function stop(){fade(0,350,function(){a.pause();ui();});}
+  // first real gesture anywhere starts the song (unless the guest muted it before); keeps listening until a play actually succeeds
+  function first(e){if(e&&e.target&&(e.target===b||b.contains(e.target)))return;
+    if(muted){unlisten();return;} if(a.paused&&!trying)play(900);}
+  EV.forEach(function(t){D.addEventListener(t,first,true);});
+  // some browsers (desktop, returning visitors) allow sound without a gesture — try quietly once the curtain is open
+  if(typeof afterHeroOpen==='function')afterHeroOpen(function(){if(!muted&&a.paused){var p;try{p=a.play();}catch(e){}
+      if(p&&p.then)p.then(function(){started=true;ui();fade(VOL,2200);}).catch(function(){if(tip)tip.classList.add('on');setTimeout(function(){tip&&tip.classList.remove('on');},7000);});}},1200);
+  b.addEventListener('click',function(e){e.stopPropagation();
+    if(a.paused){muted=false;try{localStorage.removeItem('ym_music');}catch(x){}play(0);}
+    else{muted=true;try{localStorage.setItem('ym_music','off');}catch(x){}stop();}});
+  if(tip)tip.addEventListener('click',function(){tip.classList.remove('on');muted=false;try{localStorage.removeItem('ym_music');}catch(x){}play(0);});
+  D.addEventListener('visibilitychange',function(){if(D.hidden){wasPlaying=!a.paused;if(wasPlaying)a.pause();}else if(wasPlaying&&!muted){a.play().catch(function(){});}ui();});
 })();
 
 // ======================= PARTICLES =======================

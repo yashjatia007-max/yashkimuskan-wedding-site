@@ -104,7 +104,7 @@ with open(os.path.join(out_dir, 'index.html'), 'w') as f:
 
 print(f"Built {len(head)} bytes -> dist/v2/index.html")
 print(f"Built {len(root_html)} bytes -> dist/index.html")
-for fn in ('og.jpg','favicon.ico','favicon-192.png','apple-touch-icon.png'):
+for fn in ('og.jpg','favicon.ico','favicon-192.png','apple-touch-icon.png','music.mp3'):
     shutil.copy(os.path.join(HERE,'assets',fn), os.path.join(out_dir,fn))
 open(os.path.join(out_dir,'robots.txt'),'w').write("User-agent: *\nAllow: /\n\nSitemap: https://yashkimuskan.com/sitemap.xml\n")
 import datetime
